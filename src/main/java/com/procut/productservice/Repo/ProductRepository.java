@@ -1,9 +1,7 @@
 package com.procut.productservice.Repo;
 
-import org.springframework.data.mongodb.repository.*;
-
 import com.procut.productservice.Models.Product;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ProductRepository extends MongoRepository<Product,String>{
-    
+public interface ProductRepository extends MongoRepository<Product, String> {
 }
