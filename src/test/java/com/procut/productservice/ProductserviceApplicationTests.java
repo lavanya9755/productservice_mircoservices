@@ -13,6 +13,8 @@ import org.testcontainers.utility.DockerImageName;
 import com.mongodb.assertions.Assertions;
 import com.procut.productservice.Models.Product;
 import com.procut.productservice.Repo.ProductRepository;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 import io.restassured.RestAssured;
 
@@ -62,12 +64,12 @@ public class ProductserviceApplicationTests {
             .contentType("application/json")
             .body(requestBody)
             .when()
-            .post("/api/product")
+                .post("/api/product")
             .then()
-            .log().body()
-            .body("id", Matchers.notNullValue())
-            .body("name", Matchers.equalTo("iPhone 15"))
-            .body("description", Matchers.equalTo("iPhone 15 is a smartphone from Apple"))
-            .body("price", Matchers.equalTo(1000));
+                .body("name", equalTo("iPhone 15"))
+                .body("id", notNullValue())
+                // .body("name", Matchers.equalTo("iPhone 15"))
+                .body("description", equalTo("iPhone 15 is a smartphone from Apple"))
+                .body("price", equalTo(1000));
     }
 }

@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductResponse createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
@@ -24,9 +24,18 @@ public class ProductService {
                 .price(productRequest.price())
                 .build();
     
-        product = productRepository.save(product); 
+                // Product savedProduct = productRepository.save(product); //isko comment kar dena 
+                productRepository.save(product); // Save the product to the database(original )
+                log.info("Product created successfully with ID: {}", product.getId());
+               
+                // return new ProductResponse(
+                //     savedProduct.getId(),
+                //     savedProduct.getName(),
+                //     savedProduct.getDescription(),
+                //     savedProduct.getPrice()
+                // );
     
-        log.info("Product created successfully with ID: {}", product.getId());
+        
     
         return new ProductResponse(
             product.getId(),
