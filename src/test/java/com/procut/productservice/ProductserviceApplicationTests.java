@@ -1,4 +1,5 @@
 package com.procut.productservice;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,6 @@ public class ProductserviceApplicationTests {
     void shouldCreateProduct() {
         String requestBody = """
             {
-                
                 "name": "iPhone 15",
                 "description": "iPhone 15 is a smartphone from Apple",
                 "price": 1000

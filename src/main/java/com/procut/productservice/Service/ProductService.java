@@ -24,25 +24,23 @@ public class ProductService {
                 .price(productRequest.price())
                 .build();
     
-                // Product savedProduct = productRepository.save(product); //isko comment kar dena 
-                productRepository.save(product); // Save the product to the database(original )
-                log.info("Product created successfully with ID: {}", product.getId());
+                Product savedProduct = productRepository.save(product); //isko comment kar dena 
+                // productRepository.save(product); // Save the product to the database(original )
+                log.info("Product created successfully with ID: {}", savedProduct.getId());
                
-                // return new ProductResponse(
-                //     savedProduct.getId(),
-                //     savedProduct.getName(),
-                //     savedProduct.getDescription(),
-                //     savedProduct.getPrice()
-                // );
+                return new ProductResponse(
+                    savedProduct.getId(),
+                    savedProduct.getName(),
+                    savedProduct.getDescription(),
+                    savedProduct.getPrice()
+                );
     
-        
-    
-        return new ProductResponse(
-            product.getId(),
-            product.getName(),
-            product.getDescription(),
-            product.getPrice()
-        );
+        // return new ProductResponse(
+        //     product.getId(),
+        //     product.getName(),
+        //     product.getDescription(),
+        //     product.getPrice()
+        // );
     }
     
 
