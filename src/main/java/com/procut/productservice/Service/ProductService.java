@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class ProductService {
-    private final ProductRepository productRepository = null;
+    private final ProductRepository productRepository;
 
     public ProductResponse createProduct(ProductRequest productRequest) {
         Product product = Product.builder()
